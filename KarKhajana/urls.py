@@ -28,6 +28,7 @@ from rest_framework.documentation import include_docs_urls
 from carsworld.views import CarListCreateView, CarDetailView, CarSearchView
 
 urlpatterns = [
+    path('admin/', admin.site.urls),
     path('api/cars/', CarListCreateView.as_view(), name='car-list-create'),
     path('api/cars/<int:pk>/', CarDetailView.as_view(), name='car-detail'),
     path('api/cars/search/', CarSearchView.as_view(), name='car-search'),

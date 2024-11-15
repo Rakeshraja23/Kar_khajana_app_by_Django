@@ -4,4 +4,6 @@ from django.contrib import admin
 
 from carsworld.models import *
 
-admin.site.register(Profile)
+admin.site.register(Car)
+
+admin.site.register(CarImage)
