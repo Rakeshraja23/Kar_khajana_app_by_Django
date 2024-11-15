@@ -1,0 +1,27 @@
+<!-- templates/cars/car_list.html -->
+{% extends 'base.html' %}
+
+{% block title %}My Cars{% endblock %}
+
+{% block content %}
+<h2>My Cars</h2>
+
+<form id="search-form" method="get" action="{% url 'car_search' %}">
+    <input type="text" name="q" placeholder="Search cars..." required>
+    <button type="submit">Search</button>
+</form>
+
+<ul id="car-list">
+    {% for car in cars %}
+        <li>
+            <h3><a href="{% url 'car_detail' car.id %}">{{ car.title }}</a></h3>
+            <p>{{ car.description|truncatewords:20 }}</p>
+            <small>Tags: {{ car.tags }}</small>
+        </li>
+    {% empty %}
+        <li>No cars found.</li>
+    {% endfor %}
+</ul>
+
+<a href="{% url 'car_create' %}">Add a New Car</a>
+{% endblock %}

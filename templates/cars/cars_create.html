@@ -1,0 +1,25 @@
+<!-- templates/cars/car_create.html -->
+{% extends 'base.html' %}
+
+{% block title %}Add a New Car{% endblock %}
+
+{% block content %}
+<h2>Add a New Car</h2>
+<form method="post" enctype="multipart/form-data" action="{% url 'car_create' %}">
+    {% csrf_token %}
+    <label>Title:</label>
+    <input type="text" name="title" required><br>
+
+    <label>Description:</label>
+    <textarea name="description" required></textarea><br>
+
+    <label>Tags (JSON format):</label>
+    <input type="text" name="tags" placeholder='e.g., {"car_type": "SUV", "company": "Toyota"}'><br>
+
+    <label>Images (up to 10):</label>
+    <input type="file" name="images" multiple><br>
+
+    <button type="submit">Create Car</button>
+</form>
+{% endblock %}
+

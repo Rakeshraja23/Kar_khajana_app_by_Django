@@ -1,0 +1,25 @@
+<!-- templates/cars/car_edit.html -->
+{% extends 'base.html' %}
+
+{% block title %}Edit Car{% endblock %}
+
+{% block content %}
+<h2>Edit Car</h2>
+<form method="post" enctype="multipart/form-data" action="{% url 'car_edit' car.id %}">
+    {% csrf_token %}
+    <label>Title:</label>
+    <input type="text" name="title" value="{{ car.title }}" required><br>
+
+    <label>Description:</label>
+    <textarea name="description" required>{{ car.description }}</textarea><br>
+
+    <label>Tags (JSON format):</label>
+    <input type="text" name="tags" value="{{ car.tags }}"><br>
+
+    <label>Images (add new or replace existing):</label>
+    <input type="file" name="images" multiple><br>
+
+    <button type="submit">Save Changes</button>
+</form>
+{% endblock %}
+
